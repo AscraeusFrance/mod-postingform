@@ -26,11 +26,36 @@ $auth->acl($user->data);
 $user->setup('mods/postingform');
 
 // Starting some vars
-
+$select_forum_id		= request_var('select_forum_id', 0);
 
 // Starting forums list
+	$sql_forums_list = 'SELECT forum_id, forum_name, forum_type, forum_status, left_id, right_id
+	FROM ' . FORUMS_TABLE . '
+	WHERE forum_status = ' . ITEM_UNLOCKED . '
+	ORDER BY left_id';
+	
+	$result_forums_list = $db->sql_query($sql_forums_list);
+	
+	$forums_list = array();
+	while ($row = $db->sql_fetchrow($result_forums_list))
+	{
 
-
+		$template->assign_vars(array(
+			'S_FORUM_ID'	=> (!$select_forum_id) ? false : true,
+			'S_FORUMS_LIST'	=> (!$row) ? false : true,
+		));
+		
+		$template->assign_block_vars('forums_list', array(
+			'FORUM_ID'		=> $row['forum_id'],
+			'FORUM_NAME'	=> $row['forum_name'],
+			'SELECTED'		=> ($row['forum_id'] == $select_forum_id) ? ' selected="selected"' : '',
+			'S_IS_CAT'		=> ($row['forum_type'] == FORUM_CAT) ? true : false,
+			'S_IS_LINK'		=> ($row['forum_type'] == FORUM_LINK) ? true : false,
+			'S_IS_POST'		=> ($row['forum_type'] == FORUM_POST) ? true : false,
+		));
+    }
+	$db->sql_freeresult($result_forums_list);
+	
 // Starting topics list
 
 

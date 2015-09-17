@@ -1,5 +1,52 @@
 <!-- INCLUDE overall_header.html -->
 
+<form id="postforum" method="post" action="">
 
+	<div class="panel bg2">
+		<div class="inner">
+			<fieldset class="fields1">
+		<!-- Starting Form title -->
+			<h2>{L_POSTING_FORM}</h2>
+		<!-- Ending Form title -->
 
+		<!-- Starting forums list -->
+			<dl>
+				<dt><label for="select_forum_id">{L_FORUM_SELECT_TITLE}{L_COLON}</label></dt>
+				<dd>
+			<!-- IF S_FORUMS_LIST -->
+				<select id="select_forum_id" name="select_forum_id" onchange="this.form.submit()">
+					<option value="-1" disabled <!-- IF not S_FORUM_ID -->selected<!-- ELSE --><!-- ENDIF -->>{L_FORUM_SELECT_TITLE}</option>
+				<!-- BEGIN forums_list -->
+					<!-- IF not forums_list.S_IS_POST -->
+						<optgroup label="{forums_list.FORUM_NAME}">
+					<!-- ELSE -->
+						<option value="{forums_list.FORUM_ID}" {forums_list.SELECTED}>{forums_list.FORUM_NAME}
+					<!-- ENDIF -->
+					<!-- IF not forums_list.S_IS_POST -->
+						</optgroup>
+					<!-- ELSE -->
+						</option>
+					<!-- ENDIF -->
+				<!-- END forums_list -->
+				</select>
+			<!-- ELSE -->
+				{L_NO_FORUM}
+			<!-- ENDIF -->
+				</dd>
+			</dl>
+		<!-- Ending forums list -->
+
+		
+			</fieldset>
+			
+		<!-- Starting Submission button -->
+			<fieldset class="submit-buttons">
+				<input type="submit" accesskey="s" tabindex="6" name="post" value="{L_SUBMIT}" />&nbsp;
+			</fieldset>
+		<!-- Ending Submission button -->
+			
+		</div>
+	</div>
+	
+</form>	
 <!-- INCLUDE overall_footer.html -->

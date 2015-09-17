@@ -40,5 +40,12 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'POSTING_FORM'			=> 'Posts publication form',
+	// Form title
+	'POSTING_FORM'			=> 'Posting Form',
+	
+	// Forums list
+	'FORUM_SELECT_TITLE'	=> 'Select a forum',
+	'NO_FORUM'				=> 'Sorry, but there are no forums available.',
+	
+	
 ));
