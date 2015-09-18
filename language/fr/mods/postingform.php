@@ -41,11 +41,18 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	// Form title
-	'POSTING_FORM'			=> 'Formulaire de publication de message',
+	'POSTING_FORM_TITLE'	=> 'Formulaire de publication de message',
 	
 	// Forums list
 	'FORUM_SELECT_TITLE'	=> 'Sélectionner un forum',
 	'NO_FORUM'				=> 'Nous sommes désolés, mais il n’y a aucun forum disponible.',
 	
+	// Post types
+	'POST_TYPE_TITLE'		=> 'Type de message',
+	'POST_TYPE_NEW'			=> 'Nouveau sujet',
+	'POST_TYPE_REPLY'			=> 'Répondre à un sujet',
 	
+	// Topics list
+	'TOPIC_SELECT_TITLE'	=> 'Sélectionner un sujet',
+	'NO_TOPIC'				=> 'Nous sommes désolés, mais il n’y a aucun sujet disponible.',
 ));
