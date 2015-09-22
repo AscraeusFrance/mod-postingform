@@ -56,6 +56,20 @@ $lang = array_merge($lang, array(
 	'POST_TITLE'			=> 'Titre du message',
 	'POST_MESSAGE'			=> 'Message',
 	'POST_MESSAGE_EXPLAIN'	=> 'Veuillez entrer du texte brut. Ni les balises HTML, ni les BBCodes, ne sont pris en charge',
+	'POST_DATE'			=> 'Date',
+	'POST_DATE_EXPLAIN'			=> 'Au format <strong>JJ/MM/AAAA</strong>',
+	'POST_TIME'			=> 'Heure',
+	'POST_TIME_EXPLAIN'			=> 'Au format <strong>HH:MM:SS</strong>',
+	
+	// Users management
+	'USERS_TYPE_TITLE'		=> 'Type d’utilisateur',
+	'USERS_TYPE_NEW'		=> 'Nouvel utilisateur',
+	'USERS_TYPE_REGISTERED'	=> 'Déjà enregistré',
+	'USER_SELECT_TITLE'		=> 'Choisissez un membre',
+	'NO_USER_REGISTERED'	=> 'Nous sommes désolés, mais il n’y a aucun membre enregistré.',
+	'USER_NAME_FIELD'			=> 'Pseudo',
+	'USER_MAIL_FIELD'			=> 'Adresse e-mail',
+	
 	
 	// Topics list
 	'TOPIC_SELECT_TITLE'	=> 'Sélectionner un sujet',

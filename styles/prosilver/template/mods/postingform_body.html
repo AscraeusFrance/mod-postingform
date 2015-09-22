@@ -86,13 +86,79 @@
 					<dd><textarea id="select_message" name="select_message" rows="15" cols="76" tabindex="60">{POST_TEXT_FIELD}</textarea></dd>
 				</dl>
 			<!-- ENDIF -->
-		<!-- Ending post message -->		
+		<!-- Ending post message -->
+
+		<!-- Starting post date -->
+			<!-- IF (POST_TYPE_OPTION eq 2 and S_TOPIC_ID) or POST_TYPE_OPTION eq 1 -->
+				<hr />
+				<dl>
+					<dt><label for="select_post_time_day">{L_POST_DATE}{L_COLON}</label><br />{L_POST_DATE_EXPLAIN}</dt>
+					<dd><input id="select_post_time_day" type="text" name="select_post_time_day" value="{POST_TEXT_DAY}" size="12" maxlength="10" onchange="this.form.submit()" tabindex="70" /></dd>
+				</dl>
+			<!-- ENDIF -->
+		<!-- Ending post date -->
+
+		<!-- Starting post time -->
+			<!-- IF (POST_TYPE_OPTION eq 2 and S_TOPIC_ID) or POST_TYPE_OPTION eq 1 -->
+				<dl>
+					<dt><label for="select_post_time_hour">{L_POST_TIME}{L_COLON}</label><br />{L_POST_TIME_EXPLAIN}</dt>
+					<dd><input id="select_post_time_hour" type="text" name="select_post_time_hour" value="{POST_TEXT_HOUR}" size="12" maxlength="10" onchange="this.form.submit()" tabindex="80" /></dd>
+				</dl>
+			<!-- ENDIF -->
+		<!-- Ending post time -->
+
+		<!-- Starting users types -->
+			<!-- IF POST_TYPE_OPTION eq 1 or (POST_TYPE_OPTION eq 2 and S_TOPIC_ID) -->
+				<hr />
+				<dl>
+					<dt><label for="select_user_type">{L_USERS_TYPE_TITLE}{L_COLON}</label></dt>
+					<dd>
+						<input id="select_user_type" type="radio" name="select_user_type" value="1"<!-- IF USERS_TYPE_OPTION eq 1 --> checked="checked"<!-- ENDIF --> onClick="this.form.submit()" />{L_USERS_TYPE_NEW}
+						<input id="select_user_type" type="radio" name="select_user_type" value="2"<!-- IF USERS_TYPE_OPTION eq 2 --> checked="checked"<!-- ENDIF --> onClick="this.form.submit()" />{L_USERS_TYPE_REGISTERED}						
+					</dd>
+				</dl>
+			<!-- ENDIF -->
+		<!-- Ending users types -->
+
+		<!-- Starting users list -->
+			<!-- IF USERS_TYPE_OPTION eq 2 -->
+				<hr />
+				<dl>
+					<dt><label for="select_user_id">{L_USER_SELECT_TITLE}{L_COLON}</label></dt>
+					<dd>
+				<!-- IF S_USERS_LIST -->
+					<select id="select_user_id" name="select_user_id" onchange="this.form.submit()" /><option value="-1" disabled<!-- IF not SELECTED_USER_ID --> selected<!-- ELSE --><!-- ENDIF -->>{L_USER_SELECT_TITLE}</option>
+					<!-- BEGIN users_list -->
+							<option value="{users_list.USER_ID}"{users_list.USER_SELECTED}>{users_list.USER_NAME}
+					<!-- END users_list -->					
+					</select>
+				<!-- ELSE -->
+					{L_NO_USER_REGISTERED}
+				<!-- ENDIF -->
+					</dd>
+				</dl>
+			<!-- ENDIF -->
+		<!-- Ending users list -->
+
+		<!-- Starting new users -->
+			<!-- IF USERS_TYPE_OPTION eq 1 -->
+				<hr />
+				<dl>
+					<dt><label for="select_user_name">{L_USER_NAME_FIELD}{L_COLON}</label></dt>
+					<dd><input id="select_user_name" type="text" name="select_user_name" value="{USER_NAME_FIELD}" size="45" onchange="this.form.submit()" /></dd>
+				</dl>
+				<dl>
+					<dt><label for="select_user_mail">{L_USER_MAIL_FIELD}{L_COLON}</label></dt>
+					<dd><input id="select_user_mail" type="text" name="select_user_mail" value="{USER_MAIL_FIELD}" size="45" onchange="this.form.submit()" /></dd>
+				</dl>
+			<!-- ENDIF -->
+		<!-- Ending new users -->
 		
 			</fieldset>
 			
 		<!-- Starting Submission button -->
 			<fieldset class="submit-buttons">
-				<input type="submit" accesskey="s" tabindex="6" name="post" value="{L_SUBMIT}" />&nbsp;
+				<input type="submit" accesskey="s" tabindex="6" name="post" value="{L_SUBMIT}" disabled />&nbsp;
 			</fieldset>
 		<!-- Ending Submission button -->
 			

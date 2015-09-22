@@ -56,7 +56,20 @@ $lang = array_merge($lang, array(
 	'POST_TITLE'			=> 'Post title',
 	'POST_MESSAGE'			=> 'Text',
 	'POST_MESSAGE_EXPLAIN'	=> 'Please insert only text. Any HTML or BBCode tags will be ignored',
-		
+	'POST_DATE'				=> 'Day',
+	'POST_DATE_EXPLAIN'		=> 'Format <strong>DD/MM/YYYY</strong>',
+	'POST_TIME'				=> 'Hour',
+	'POST_TIME_EXPLAIN'		=> 'Format <strong>HH:MM:SS</strong>',
+
+	// Users management
+	'USERS_TYPE_TITLE'		=> 'User type',
+	'USERS_TYPE_NEW'		=> 'New user',
+	'USERS_TYPE_REGISTERED'	=> 'Already registered',
+	'USER_SELECT_TITLE'		=> 'Select a member',
+	'NO_USER_REGISTERED'	=> 'Sorry, but there are no registered users.',
+	'USER_NAME_FIELD'		=> 'Username',
+	'USER_MAIL_FIELD'		=> 'User e-mail',
+	
 	// Topics list
 	'TOPIC_SELECT_TITLE'	=> 'Select a topic',
 	'NO_TOPIC'				=> 'Sorry, but there are no topics available.',
