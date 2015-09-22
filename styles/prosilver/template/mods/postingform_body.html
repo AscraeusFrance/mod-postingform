@@ -38,6 +38,7 @@
 
 		<!-- Starting post_type -->
 			<!-- IF SHOW_POST_TYPE -->
+				<hr />
 				<dl>
 					<dt><label for="select_post_type">{L_POST_TYPE_TITLE}{L_COLON}</label></dt>
 					<dd>
@@ -52,12 +53,13 @@
 		
 		<!-- Starting topics list -->
 			<!-- IF POST_TYPE_OPTION eq 2 -->
+				<hr />
 				<dl>
 					<dt><label for="select_topic_id">{L_TOPIC_SELECT_TITLE}{L_COLON}</label></dt>
 					<dd>
 				<!-- IF S_TOPICS_LIST -->
 					<!-- BEGIN topics_list -->
-						<input id="select_topic_id" type="radio" name="select_topic_id" value="{topics_list.TOPIC_ID}"{topics_list.TOPIC_SELECTED} onClick="this.form.submit()" tabindex="40" />{topics_list.TOPIC_TITLE}
+						<input id="select_topic_id" type="radio" name="select_topic_id" value="{topics_list.TOPIC_ID}"{topics_list.TOPIC_SELECTED} onClick="this.form.submit()" tabindex="40" />{topics_list.TOPIC_TITLE}<br />
 					<!-- END topics_list -->
 				<!-- ELSE -->
 					{L_NO_TOPIC}
@@ -66,8 +68,25 @@
 				</dl>
 			<!-- ENDIF -->
 		<!-- Ending topics list -->
-		
-		
+
+		<!-- Starting topic title -->
+			<!-- IF (POST_TYPE_OPTION eq 2 and S_TOPIC_ID) or POST_TYPE_OPTION eq 1 -->
+				<hr />
+				<dl>
+					<dt><label for="select_post_title">{L_POST_TITLE}{L_COLON}</label></dt>
+					<dd><input id="select_post_title" type="text" name="select_post_title" value="{POST_TITLE_FIELD}" size="45" maxlength="<!-- IF POST_TYPE_OPTION eq 1 -->120<!-- ELSE -->124<!-- ENDIF -->" tabindex="50" /></dd>
+				</dl>
+			<!-- ENDIF -->
+		<!-- Ending topic title -->
+
+		<!-- Starting post message -->
+			<!-- IF (POST_TYPE_OPTION eq 2 and S_TOPIC_ID) or POST_TYPE_OPTION eq 1 -->		
+				<dl>
+					<dt><label for="select_message">{L_POST_MESSAGE}{L_COLON}</label><br />{L_POST_MESSAGE_EXPLAIN}</dt>
+					<dd><textarea id="select_message" name="select_message" rows="15" cols="76" tabindex="60">{POST_TEXT_FIELD}</textarea></dd>
+				</dl>
+			<!-- ENDIF -->
+		<!-- Ending post message -->		
 		
 			</fieldset>
 			

@@ -52,6 +52,11 @@ $lang = array_merge($lang, array(
 	'POST_TYPE_NEW'			=> 'New topic',
 	'POST_TYPE_REPLY'		=> 'Reply to a topic',
 	
+	// Post fields
+	'POST_TITLE'			=> 'Post title',
+	'POST_MESSAGE'			=> 'Text',
+	'POST_MESSAGE_EXPLAIN'	=> 'Please insert only text. Any HTML or BBCode tags will be ignored',
+		
 	// Topics list
 	'TOPIC_SELECT_TITLE'	=> 'Select a topic',
 	'NO_TOPIC'				=> 'Sorry, but there are no topics available.',

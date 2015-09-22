@@ -52,6 +52,11 @@ $lang = array_merge($lang, array(
 	'POST_TYPE_NEW'			=> 'Nouveau sujet',
 	'POST_TYPE_REPLY'			=> 'Répondre à un sujet',
 	
+	// Post fields
+	'POST_TITLE'			=> 'Titre du message',
+	'POST_MESSAGE'			=> 'Message',
+	'POST_MESSAGE_EXPLAIN'	=> 'Veuillez entrer du texte brut. Ni les balises HTML, ni les BBCodes, ne sont pris en charge',
+	
 	// Topics list
 	'TOPIC_SELECT_TITLE'	=> 'Sélectionner un sujet',
 	'NO_TOPIC'				=> 'Nous sommes désolés, mais il n’y a aucun sujet disponible.',

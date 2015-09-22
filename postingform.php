@@ -29,6 +29,8 @@ $user->setup('mods/postingform');
 $select_forum_id		= request_var('select_forum_id', 0);
 $select_post_type		= request_var('select_post_type', 0);
 $select_topic_id		= request_var('select_topic_id', 0);
+$select_post_title 		= utf8_normalize_nfc(request_var('select_post_title', '', true));
+$select_message 		= utf8_normalize_nfc(request_var('select_message', '', true));
 
 // Starting forums list
 	$sql_forums_list = 'SELECT forum_id, forum_name, forum_type, forum_status, left_id, right_id
@@ -83,7 +85,38 @@ $select_topic_id		= request_var('select_topic_id', 0);
 	}
 
 // Starting topic/post title
-
+	if ($select_post_type == 1)
+	{	
+		$findme = 'Re: ';
+		$pos = strpos($select_post_title, $findme);
+		
+			if ($pos !== FALSE)
+			{
+				$select_post_title = '';
+			}
+			else
+			{
+				$select_post_title = $select_post_title;
+			}	
+	}
+	else
+	{
+			if (!$select_topic_id)
+			{
+				$select_post_title = '';
+			}
+			else
+			{
+				$sql = 'SELECT topic_id, topic_title
+					FROM ' . TOPICS_TABLE . '
+					WHERE topic_id = ' . $select_topic_id;
+				$result = $db->sql_query_limit($sql, 1);
+				$row_topic = $db->sql_fetchrow($result);
+				$db->sql_freeresult($result);
+			
+				$select_post_title = 'Re: ' . $row_topic['topic_title'];
+			}	
+	}
 
 // Starting time publication
 
@@ -96,21 +129,25 @@ $select_topic_id		= request_var('select_topic_id', 0);
 
 // Starting some assign_vars()
 
+		
+// Output page
+page_header($user->lang['POSTING_FORM_TITLE']);
 
 // Some vars
 		$template->assign_vars(array(
 			'S_FORUM_ID'	=> ($select_forum_id) ? true : false,
 			'S_POST_TYPE'	=> ($select_post_type) ? true : false,
+			'S_TOPIC_ID'	=> ($select_topic_id) ? true : false,
 			
 			'POST_TYPE_OPTION'	=> $select_post_type,
+	
+			'POST_TITLE_FIELD'	=> $select_post_title,
+			'POST_TEXT_FIELD'	=> $select_message,
 			
 			'SHOW_POST_TYPE'	=> ($select_forum_id) ? true : false,
+			
 			'SHOW_TOPICS_LIST'	=> ($select_forum_id && $select_post_type == 2) ? true : false,
 		));
-		
-// Output page
-page_header($user->lang['POSTING_FORM_TITLE']);
-
 
 // Starting our template page loading
 $template->set_filenames(array(
