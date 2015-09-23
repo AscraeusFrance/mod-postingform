@@ -69,8 +69,27 @@ $lang = array_merge($lang, array(
 	'NO_USER_REGISTERED'	=> 'Sorry, but there are no registered users.',
 	'USER_NAME_FIELD'		=> 'Username',
 	'USER_MAIL_FIELD'		=> 'User e-mail',
+	'USER_NO_SUCCESSFUL'	=> 'Member registration failed',
+	'USER_SUCCESSFUL'		=> 'Member successfully added',
 	
 	// Topics list
 	'TOPIC_SELECT_TITLE'	=> 'Select a topic',
 	'NO_TOPIC'				=> 'Sorry, but there are no topics available.',
+	
+	// Errors
+	'ERRORS_EXPLAIN'			=> array(
+		1	=> 'Vous avez %d erreur de saisie. Corrigez-la et renvoyez le formulaire.<br />',
+		2	=> 'Vous avez %d erreurs de saisie. Corrigez-les et renvoyez le formulaire.<br />',
+	),
+	'NO_SELECTED_FORUM'			=> 'No forum selected',
+	'NO_SELECTED_POST_TYPE'		=> 'No post type selected',
+	'NO_SELECTED_TOPIC_ID'		=> 'No topic selected',
+	'NO_SELECTED_POST_TITLE'	=> 'No post title entered',
+	'NO_SELECTED_POST_TEXT'		=> 'No message entered',
+	'NO_SELECTED_POST_DAY'		=> 'No date entered',
+	'NO_SELECTED_POST_TIME'		=> 'No hour entered',
+	'NO_SELECTED_USER_ID'		=> 'No user selected',
+	'NO_SELECTED_USER_NAME'		=> 'No username entered',
+	'USERNAME_TAKEN'			=> 'Username « <strong>%s</strong> » already taken',
+	'SELECTED_USER_MAIL_INVALID' => 'You entered a no valid email',
 ));

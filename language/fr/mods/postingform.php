@@ -67,11 +67,29 @@ $lang = array_merge($lang, array(
 	'USERS_TYPE_REGISTERED'	=> 'Déjà enregistré',
 	'USER_SELECT_TITLE'		=> 'Choisissez un membre',
 	'NO_USER_REGISTERED'	=> 'Nous sommes désolés, mais il n’y a aucun membre enregistré.',
-	'USER_NAME_FIELD'			=> 'Pseudo',
-	'USER_MAIL_FIELD'			=> 'Adresse e-mail',
-	
+	'USER_NAME_FIELD'		=> 'Pseudo',
+	'USER_MAIL_FIELD'		=> 'Adresse e-mail',
+	'USER_NO_SUCCESSFUL'	=> 'L’enregistrement du membre a échoué',
+	'USER_SUCCESSFUL'		=> 'Membre enregistré avec succès',
 	
 	// Topics list
 	'TOPIC_SELECT_TITLE'	=> 'Sélectionner un sujet',
 	'NO_TOPIC'				=> 'Nous sommes désolés, mais il n’y a aucun sujet disponible.',
+	
+	// Errors
+	'ERRORS_EXPLAIN'			=> array(
+		1	=> 'Vous avez %d erreur de saisie. Corrigez-la et renvoyez le formulaire.<br />',
+		2	=> 'Vous avez %d erreurs de saisie. Corrigez-les et renvoyez le formulaire.<br />',
+	),
+	'NO_SELECTED_FORUM'			=> 'Aucun forum sélectionné',
+	'NO_SELECTED_POST_TYPE'		=> 'Aucun type de message sélectionné',
+	'NO_SELECTED_TOPIC_ID'		=> 'Aucun sujet sélectionné',
+	'NO_SELECTED_POST_TITLE'	=> 'Aucun titre de message saisi',
+	'NO_SELECTED_POST_TEXT'		=> 'Aucun message saisi',
+	'NO_SELECTED_POST_DAY'		=> 'Aucune date saisie',
+	'NO_SELECTED_POST_TIME'		=> 'Aucune heure saisie',
+	'NO_SELECTED_USER_ID'		=> 'Aucun utilisateur sélectionné',
+	'NO_SELECTED_USER_NAME'		=> 'Aucun pseudo saisi',
+	'USERNAME_TAKEN'			=> 'Nom d’utilisateur « <strong>%s</strong> » déjà pris',
+	'SELECTED_USER_MAIL_INVALID' => 'Vous avez saisi une adresse mail invalide',
 ));

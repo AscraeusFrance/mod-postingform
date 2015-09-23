@@ -26,6 +26,8 @@ $auth->acl($user->data);
 $user->setup('mods/postingform');
 
 // Starting some vars
+$submit = $request->is_set_post('post'); // Did we press submit button ?
+
 $select_forum_id		= request_var('select_forum_id', 0);
 $select_post_type		= request_var('select_post_type', 0);
 $select_topic_id		= request_var('select_topic_id', 0);
@@ -240,6 +242,94 @@ if ($submit)
 		
 		$show_errors = implode('<br />', $errors);
 	// Ending errors
+	
+	// No errors, let's continue
+	if (!$show_errors)
+	{
+		if ($select_user_type == 1) // Did we decide to register a new member ?
+		{
+			if (!function_exists('user_add')) // Including our function to register our member...
+			{
+				include($phpbb_root_path . 'includes/functions_user.' . $phpEx);
+			}
+			
+			// Which is the default group ?
+				$sql = 'SELECT group_id FROM ' . GROUPS_TABLE . " WHERE group_name = 'REGISTERED' AND group_type = " . GROUP_SPECIAL;
+				$result = $db->sql_query($sql);
+				$row = $db->sql_fetchrow($result);
+				$default_group_id = $row['group_id'];
+				
+			// User password... sent with our welcome message sent by email
+				$string = str_shuffle('abcdefghjkmnpqrstuvwxyz123456789ABCDEFGHJKMNPQRSTUVWXYZ');
+				$string2 = substr( $string , 0 , 3 ); // prendre les 10 1ers caractères.
+				$string3 = str_shuffle('abcdefghjkmnpqrstuvwxyz123456789ABCDEFGHJKMNPQRSTUVWXYZ');
+				$string4 = substr( $string3 , 0 , 5 ); // prendre les 10 1ers caractères
+				$string5 = str_shuffle('abcdefghjkmnpqrstuvwxyz123456789ABCDEFGHJKMNPQRSTUVWXYZ');
+				$string6 = substr( $string5 , 0 , 5 ); // prendre les 10 1ers caractères.
+				
+				$pass = $string2 . $string4 . $string6;
+	
+			// User vars...
+			$user_row = array(
+				'user_type'             		=> USER_NORMAL,
+				'group_id'              		=> $default_group_id,
+				'user_regdate'             		=> time(),
+				'username'              		=> $select_user_name,
+				'username_clean'              	=> utf8_clean_string($select_user_name),
+				'user_password'              	=> phpbb_hash($pass),
+				'user_email'              		=> $select_user_mail,
+				'user_lang'              		=> 'fr', //$row['XXXXXXX'],
+				'user_colour'              		=> '008800', //???
+			);
+			$user_id = user_add($user_row);
+			
+			$user->setup(array('common', 'ucp')); // Some language files necessary...
+			
+			// Email template...
+			$message = array();
+			$message[] = $user->lang['ACCOUNT_ADDED'];
+			$email_template = 'user_postingform_welcome';
+					
+			if ($config['email_enable'])
+			{
+				if (!class_exists('messenger'))
+				{
+					include($phpbb_root_path . 'includes/functions_messenger.' . $phpEx);
+				}
+
+			$messenger = new messenger(false);
+
+			$messenger->template($email_template, $user_row['user_lang']);
+
+			$messenger->to($user_row['user_email'], $user_row['username']);
+
+			$messenger->headers('X-AntiAbuse: Board servername - ' . $config['server_name']);
+			$messenger->headers('X-AntiAbuse: User_id - ' . $user_id);
+			$messenger->headers('X-AntiAbuse: Username - ' . $user_row['username']);
+			$messenger->headers('X-AntiAbuse: User IP - ' . $user->ip);
+
+			$messenger->assign_vars(array(
+				'WELCOME_MSG'	=> htmlspecialchars_decode(sprintf($user->lang['WELCOME_SUBJECT'], $config['sitename'])),
+				'USERNAME'		=> htmlspecialchars_decode($select_user_name),
+				'PASSWORD'		=> htmlspecialchars_decode($pass),
+			));
+
+			$messenger->send(NOTIFY_EMAIL);
+			}
+	
+		// Delete lines 320 to 330 in next version
+		if (!$user_id)
+		{
+			trigger_error($user->lang['USER_NO_SUCCESSFUL']);	
+		}
+		else
+		{
+			trigger_error($user->lang['USER_SUCCESSFUL']);			
+		}
+				
+		}
+		
+	}//no errors
 }
 else
 {
@@ -253,6 +343,10 @@ page_header($user->lang['POSTING_FORM_TITLE']);
 
 // Starting some assign_vars()
 		$template->assign_vars(array(
+			'ERRORS_LIST'		=> ($submit && $show_errors) ? $show_errors : '',
+			'SHOW_ERRORS_LIST'	=> ($submit && sizeof($errors)) ? true : false,
+			'ERRORS_EXPLAIN'	=> ($submit && sizeof($errors)) ? $user->lang('ERRORS_EXPLAIN', count($errors)) : '',
+
 			'S_FORUM_ID'	=> ($select_forum_id) ? true : false,
 			'S_POST_TYPE'	=> ($select_post_type) ? true : false,
 			'S_TOPIC_ID'	=> ($select_topic_id) ? true : false,
