@@ -2,6 +2,8 @@ Subject: Welcome to "{SITENAME}"
 
 {WELCOME_MSG}
 
+We are happy to let you know your registration on « {SITENAME} » was successful.
+
 Please keep this email for your records. Your account information is as follows:
 
 ----------------------------

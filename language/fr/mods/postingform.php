@@ -71,6 +71,10 @@ $lang = array_merge($lang, array(
 	'USER_MAIL_FIELD'		=> 'Adresse e-mail',
 	'USER_NO_SUCCESSFUL'	=> 'L’enregistrement du membre a échoué',
 	'USER_SUCCESSFUL'		=> 'Membre enregistré avec succès',
+	'USER_DAY'				=> 'Jour d’enregistrement',
+	'USER_DAY_EXPLAIN'		=> 'Au format <strong>JJ/MM/AAAA</strong>',
+	'USER_TIME'				=> 'Heure d’enregistrement',
+	'USER_TIME_EXPLAIN'		=> 'Au format <strong>HH:MM:SS</strong>',
 	
 	// Topics list
 	'TOPIC_SELECT_TITLE'	=> 'Sélectionner un sujet',
@@ -90,6 +94,8 @@ $lang = array_merge($lang, array(
 	'NO_SELECTED_POST_TIME'		=> 'Aucune heure saisie',
 	'NO_SELECTED_USER_ID'		=> 'Aucun utilisateur sélectionné',
 	'NO_SELECTED_USER_NAME'		=> 'Aucun pseudo saisi',
+	'NO_SELECTED_USER_DAY'		=> 'Aucun jour d’enregistrement saisi',
+	'NO_SELECTED_USER_TIME'		=> 'Aucune heure d’enregistrement saisie',
 	'USERNAME_TAKEN'			=> 'Nom d’utilisateur « <strong>%s</strong> » déjà pris',
 	'SELECTED_USER_MAIL_INVALID' => 'Vous avez saisi une adresse mail invalide',
 ));

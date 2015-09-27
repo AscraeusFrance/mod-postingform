@@ -71,6 +71,10 @@ $lang = array_merge($lang, array(
 	'USER_MAIL_FIELD'		=> 'User e-mail',
 	'USER_NO_SUCCESSFUL'	=> 'Member registration failed',
 	'USER_SUCCESSFUL'		=> 'Member successfully added',
+	'USER_DAY'				=> 'Registration day',
+	'USER_DAY_EXPLAIN'		=> 'Format <strong>DD/MM/YYYY</strong>',
+	'USER_TIME'				=> 'Registration hour',
+	'USER_TIME_EXPLAIN'		=> 'Format <strong>HH:MM:SS</strong>',
 	
 	// Topics list
 	'TOPIC_SELECT_TITLE'	=> 'Select a topic',
@@ -90,6 +94,8 @@ $lang = array_merge($lang, array(
 	'NO_SELECTED_POST_TIME'		=> 'No hour entered',
 	'NO_SELECTED_USER_ID'		=> 'No user selected',
 	'NO_SELECTED_USER_NAME'		=> 'No username entered',
+	'NO_SELECTED_USER_DAY'		=> 'No registration day entered',
+	'NO_SELECTED_USER_TIME'		=> 'No registration hour entered',
 	'USERNAME_TAKEN'			=> 'Username « <strong>%s</strong> » already taken',
 	'SELECTED_USER_MAIL_INVALID' => 'You entered a no valid email',
 ));

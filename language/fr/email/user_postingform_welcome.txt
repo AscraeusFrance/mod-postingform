@@ -1,6 +1,8 @@
-Subject: Bienvenue sur les forums de « {SITENAME} »
+Subject: Bienvenue sur « {SITENAME} »
 
 {WELCOME_MSG}
+
+Nous sommes heureux de vous confirmer le bon déroulement de votre inscription sur notre forum « {SITENAME} ».
 
 Conservez cet e-mail dans vos archives. Les informations de votre compte sont les suivantes :
 
